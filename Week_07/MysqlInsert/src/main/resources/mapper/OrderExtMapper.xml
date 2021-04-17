@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.geekbang.time.dao.OrderExtMapper">
+  <insert id="batchInsertOrder" parameterType="java.util.List">
+  	insert into t_order (order_id, amount, status, 
+      create_time, update_time)
+    values 
+    <foreach collection="recordList" item="item" separator=",">
+      (#{item.orderId}, #{item.amount}, #{item.status}, 
+      #{item.createTime}, #{item.updateTime})
+    </foreach >
+    
+  </insert>
+
+</mapper>

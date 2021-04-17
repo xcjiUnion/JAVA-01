@@ -1,0 +1,35 @@
+server:
+  port: 9089
+
+spring:
+  shardingsphere:
+    datasource:
+      names: primary_ds,replica_ds_0
+      primary_ds:
+        jdbc-url: jdbc:mysql://localhost:3306/geektime?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: root
+      replica_ds_0:
+        jdbc-url: jdbc:mysql://localhost:3306/slave?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: root
+    rules:
+      replica-query:
+        load-balancers:
+          round_robin:
+            type: ROUND_ROBIN
+        data-sources:
+          pr_ds:
+            primary-data-source-name: primary_ds
+            replica-data-source-names: replica_ds_0
+            load-balancer-name: round_robin
+
+mybatis:
+# 指定实体类包路径	
+  typeAliasesPackage: org.geekbang.time.po
+# 指定xml文件扫描路径 
+  mapper-locations: classpath*:mapper/*.xml

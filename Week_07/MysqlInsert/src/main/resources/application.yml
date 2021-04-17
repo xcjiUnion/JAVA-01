@@ -1,0 +1,22 @@
+server:
+  port: 9089
+  
+spring:
+  application:
+    name: MysqlInsert
+  #jmx:
+   # default-domain: mybatis
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    dirver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/geektime?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    
+
+
+mybatis:
+# 指定实体类包路径	
+  typeAliasesPackage: org.geekbang.time.po
+# 指定xml文件扫描路径 
+  mapper-locations: classpath*:mapper/*.xml

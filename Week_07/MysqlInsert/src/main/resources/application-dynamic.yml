@@ -1,0 +1,26 @@
+server:
+  port: 9089
+  
+spring:
+  application:
+    name: MysqlInsert
+  datasource:
+    master:
+      type: com.zaxxer.hikari.HikariDataSource
+      dirver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/geektime
+      username: root
+      password: root
+    slave:
+      type: com.zaxxer.hikari.HikariDataSource
+      dirver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/geektime
+      username: root
+      password: root
+
+
+mybatis:
+# 指定实体类包路径	
+  typeAliasesPackage: org.geekbang.time.po
+# 指定xml文件扫描路径 
+  mapper-locations: classpath*:mapper/*.xml
