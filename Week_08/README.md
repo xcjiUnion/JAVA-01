@@ -6,3 +6,7 @@
 
 代码在工程MysqlShardingProxy中
 
+启动ShardingSphere-Proxy，然后在MysqlShardingProxy中配置连接到3307端口的数据库
+
+##### 2、基于 hmily TCC 或 ShardingSphere 的 Atomikos XA 实现一个简单的分布 式事务应用 demo（二选一），提交到 Github。
+
